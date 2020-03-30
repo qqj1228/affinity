@@ -10,7 +10,7 @@
 
 import sys
 
-if sys.platform in ('win32',):
+if sys.platform.startswith('win32'):
     # Use win32process from pywin32
     import win32api
     import win32con
@@ -46,7 +46,7 @@ if sys.platform in ('win32',):
         except win32process.error as e:
             raise ValueError(e)
 
-elif sys.platform in ('linux2'):
+elif sys.platform.startswith('linux'):
     from _affinity import set_process_affinity_mask, get_process_affinity_mask
 
 else:
